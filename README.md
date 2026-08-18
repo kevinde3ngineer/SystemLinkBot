@@ -1,2 +1,3 @@
-# -System-Link-Bot
-Discord Python Bot That Is Used To Display Your Socials
+# [System Link] Bot
+
+no description yet
