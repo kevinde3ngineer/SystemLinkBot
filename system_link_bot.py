@@ -29,8 +29,6 @@ YOUTUBE = "https://www.youtube.com/channel/UCJDC2xHrSmBhc7IvTgRFw9g" # change wi
 TIKTOK = "https://tiktok.com/@kevinde3ngineer" # change with your own info
 MAKERWORLD = "https://makerworld.com/en/@kevinde3ngineer" # change with your own info
 
-GUNS_LOL = "https://guns.lol/kevinde3ngineer" # change with your own info
-
 
 # bot setup
 
@@ -51,7 +49,6 @@ class LinksView(discord.ui.View):
         self.add_item(
             discord.ui.Button(
                 label="Website",
-                emoji="🌐",
                 url=WEBSITE,
                 style=discord.ButtonStyle.link
             )
@@ -60,7 +57,6 @@ class LinksView(discord.ui.View):
         self.add_item(
             discord.ui.Button(
                 label="GitHub",
-                emoji="💻",
                 url=GITHUB,
                 style=discord.ButtonStyle.link
             )
@@ -69,7 +65,6 @@ class LinksView(discord.ui.View):
         self.add_item(
             discord.ui.Button(
                 label="YouTube",
-                emoji="▶️",
                 url=YOUTUBE,
                 style=discord.ButtonStyle.link
             )
@@ -78,7 +73,6 @@ class LinksView(discord.ui.View):
         self.add_item(
             discord.ui.Button(
                 label="TikTok",
-                emoji="🎵",
                 url=TIKTOK,
                 style=discord.ButtonStyle.link
             )
@@ -87,7 +81,6 @@ class LinksView(discord.ui.View):
         self.add_item(
             discord.ui.Button(
                 label="MakerWorld",
-                emoji="🖨️",
                 url=MAKERWORLD,
                 style=discord.ButtonStyle.link
             )
@@ -101,22 +94,12 @@ def create_links_embed():
         title="Official Links",
         description=(
             f"> **Website:** {WEBSITE}\n"
-            f">\n"
             f"> **GitHub:** {GITHUB}\n"
-            f">\n"
             f"> **YouTube:** {YOUTUBE}\n"
-            f">\n"
             f"> **TikTok:** {TIKTOK}\n"
-            f">\n"
             f"> **MakerWorld:** {MAKERWORLD}"
         ),
         color=discord.Color.blurple()
-    )
-
-    embed.add_field(
-        name="guns.lol",
-        value=f"[View my guns.lol profile]({GUNS_LOL})",
-        inline=False
     )
 
     embed.set_footer(
@@ -135,8 +118,10 @@ def create_links_embed():
 @app_commands.checks.has_permissions(administrator=True)
 async def channel(interaction: discord.Interaction):
 
+    await interaction.response.defer(ephemeral=True)
+
     if interaction.channel is None:
-        await interaction.response.send_message(
+        await interaction.followup.send(
             "I couldn't access this channel",
             ephemeral=True
         )
@@ -149,7 +134,7 @@ async def channel(interaction: discord.Interaction):
         view=LinksView()
     )
 
-    await interaction.response.send_message(
+    await interaction.followup.send(
         "official links posted",
         ephemeral=True
     )
@@ -167,7 +152,7 @@ async def channel_error(
 
         if not interaction.response.is_done():
             await interaction.response.send_message(
-                "❌ You need Administrator permission to use /channel.",
+                "you need administrator permission to use /channel.",
                 ephemeral=True
             )
 
@@ -187,7 +172,7 @@ async def channel_error(
 @bot.event
 async def on_ready():
 
-    print(f"Logged in as {bot.user}")
+    print(f"logged in as {bot.user}")
 
     try:
         synced = await bot.tree.sync()
@@ -196,7 +181,7 @@ async def on_ready():
     except Exception as error:
         print(f"failed to sync commands: {error}")
 
-    print("Bot is ready.")
+    print("bot is ready.")
 
 
 # start bot
