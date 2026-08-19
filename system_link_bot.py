@@ -91,7 +91,7 @@ class LinksView(discord.ui.View):
 
 def create_links_embed():
     embed = discord.Embed(
-        title="Official Links",
+        title="🔗 Official Links",
         description=(
             f"> **Website:** {WEBSITE}\n"
             f"> **GitHub:** {GITHUB}\n"
@@ -100,10 +100,6 @@ def create_links_embed():
             f"> **MakerWorld:** {MAKERWORLD}"
         ),
         color=discord.Color.blurple()
-    )
-
-    embed.set_footer(
-        text="official links"
     )
 
     return embed
