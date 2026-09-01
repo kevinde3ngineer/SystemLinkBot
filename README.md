@@ -1,3 +1,3 @@
-# [System Link] Bot
+# System Link Bot
 
 no description yet
