@@ -23,7 +23,7 @@ if not TOKEN:
 
 # links
 
-WEBSITE = "https://guns.lol/kevinde3ngineer" # change with your own info
+PATREON = "https://www.patreon.com/cw/kevinde3ngineer" # change with your own info
 GITHUB = "https://github.com/kevinde3ngineer" # change with your own info
 YOUTUBE = "https://www.youtube.com/channel/UCJDC2xHrSmBhc7IvTgRFw9g" # change with your own info
 TIKTOK = "https://tiktok.com/@kevinde3ngineer" # change with your own info
@@ -48,8 +48,8 @@ class LinksView(discord.ui.View):
 
         self.add_item(
             discord.ui.Button(
-                label="Website",
-                url=WEBSITE,
+                label="Patreon",
+                url=PATREON,
                 style=discord.ButtonStyle.link
             )
         )
@@ -93,7 +93,7 @@ def create_links_embed():
     embed = discord.Embed(
         title="🔗 Official Links",
         description=(
-            f"> **Website:** {WEBSITE}\n"
+            f"> **Patreon:** {PATREON}\n"
             f"> **GitHub:** {GITHUB}\n"
             f"> **YouTube:** {YOUTUBE}\n"
             f"> **TikTok:** {TIKTOK}\n"
